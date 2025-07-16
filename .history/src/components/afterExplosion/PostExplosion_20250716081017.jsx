@@ -5,7 +5,7 @@ import Button from "../Button";
 
 import PlanetModel from "../ui/PlanetModel";
 import { CollisionContext, CollisionProvider } from "../../contents/content";
-import SnowParticles from "../ui/enhance/ParticleWave.jsx";
+import snow
 
 const PostExplosion = () => {
 
