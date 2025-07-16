@@ -75,7 +75,7 @@ const Planet = () => {
         <div className=" hidden absolute group-hover:flex flex-col  shadow-lg bg-gradient-to-br from-black via-slate-900 to-black  shadow-blue-200 brightness-125    p-2 mt-5 min-w-[180px] text-center rounded-lg gap-1  -ml-10  ">
           <p className="text-sm  font-thin">Planet </p>
 
-          <p className=" text-xs font-light">+10 bonus after every 10 clicks </p>
+          <p className=" text-xs font-light">+10  </p>
           <p className=" text-sm font-light">
             {" "}
             Cost: {parseInt(nebulaCost)} stimulation
