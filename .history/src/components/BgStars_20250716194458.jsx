@@ -1,0 +1,82 @@
+import React, { useContext, useEffect, useState } from "react";
+import ig from "../assets/asset";
+
+import { CollisionContext } from "../contents/content";
+
+import "react-toastify/dist/ReactToastify.css";
+
+import sound from "../songs/songs";
+
+import toastMsg from "../utils/toast";
+import { Toaster } from "react-hot-toast";
+
+const BgStars = () => {
+  const {
+    nebulaCost,
+    bgStarDis,
+    setBgStarDis,
+    setNebulaCost,
+    value,
+    setValue,
+   
+    
+  } = useContext(CollisionContext);
+  const ClickSound = new Audio(sound.explosionSound);
+
+ const click = () => {
+  if (nebulaCost <= value) {
+
+   setBgStarDis(true) 
+    setNebulaCost(parseInt(nebulaCost * 2));
+    setValue(value - nebulaCost);
+    setbgstarLoaded(true)
+   
+
+ 
+    setTimeout(() => {
+      toastMsg("Yo! That's amazing! You've added some Cool Star collection! Woahhh!!!", {
+      background: "linear-gradient(to right, #00c9ff, #92fe9d)",
+        color: "black",
+      });
+    }, 500); 
+  }
+};
+
+
+  const buttonStyle = nebulaCost > value ? "bg-black" : "bg-white";
+
+  return (
+    <div>
+      <div className=" relative group z-30  ">
+        <div className="w-full mx-auto">
+          <Toaster position="top-center" />
+        </div>
+
+        <button
+          className={`  group hover:shadow-lg object-cover hover:shadow-white border-none ring-1 ring-blue-400 p-2 text-lg px-4 rounded-lg active:text-blue-400  hover:ring-sky-900 animate-slide-in ${buttonStyle} `}
+        >
+          <img
+            onClick={click}
+            src={ig.nebula}
+            alt="Nebula"
+            width="35px"
+            height="35px"
+            className="rounded-sm object-contain   "
+          />
+        </button>
+
+        <div className=" hidden absolute group-hover:flex flex-col  shadow-lg bg-gradient-to-br from-black via-slate-900 to-black  shadow-blue-200 brightness-125    p-2 mt-5 min-w-[180px] text-center rounded-lg gap-1  -ml-10  ">
+          <p className="text-sm  font-thin">Upgrade Background </p>
+
+          <p className=" text-xs font-light">+ 2 Simulations per Click </p>
+          <p className=" text-sm font-light">
+            {" "}
+            Cost: {parseInt(nebulaCost)} stimulation
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default BgStars
