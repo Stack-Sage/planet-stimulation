@@ -1,0 +1,83 @@
+import React, { useContext, useEffect, useState } from "react";
+import { CollisionContext } from "../contents/content";
+import Spin from "./Spin";
+import Flame from "./Flame";
+import Bang from "./Bang";
+import SunParticleScene from "./ui/SunScene";
+import sound from "../songs/songs";
+import Sound from "./Sound";
+import "../App.css";
+import ig from "../assets/asset";
+
+import Planet from "./Planet";
+import EarthScene from "./ui/PlanetModel";
+
+
+
+
+const Button = () => {
+  const ClickSound = new Audio(ig.item);
+  const { value, setValue } = useContext(CollisionContext);
+  const [inc, setInc] = useState(1);
+  const { collisionCount, allowSound, setAllowSound } =
+    useContext(CollisionContext);
+
+  useEffect(() => {
+    if (collisionCount > 0) {
+      setValue((prevValue) => prevValue + 1);
+    }
+  }, [collisionCount]);
+
+  const clickValue = (e) => {
+    setValue(value + inc);
+    ClickSound.currentTime = 0.2;
+    ClickSound.playbackRate = 1.2;
+    ClickSound.volume = 0.4;
+    ClickSound.play();
+  };
+
+  return (
+    <div className="h-fit w-screen flex flex-col justify-between ">
+      <div className=" flex flex-col items-center mt-20 text-white text-xl gap-2">
+          <div className=" gap-3 min-h-[200px] mt-14 flex w-full min-w-[400px] z-10  flex-row justify-center  text-white  p-2">
+            {value > 2 && (
+              <div className=" ">
+                  <Planet/>
+              </div>
+            )}
+
+            {value > 4 && (
+              <div className="">
+                <Spin />
+              </div>
+            )}
+            {value > 6 && (
+              <div className="">
+                <Flame />
+              </div>
+            )}
+
+          </div>
+       
+          <h1 className="italic z-50  text-xl mb-2"> {value} Stimulations </h1>
+          
+
+          <button type="button" className="btn z-50  " onClick={clickValue}>
+            <strong> Click Me! </strong>
+            <div id="container-stars">
+              <div id="stars"></div>
+            </div>
+                 
+            <div id="glow">
+              <div class="circle"></div>
+              <div class="circle"></div>
+            </div>
+          </button>
+
+        
+      </div>
+    </div>
+  );
+};
+
+export default Button;
