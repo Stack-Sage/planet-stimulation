@@ -37,7 +37,7 @@ const PostExplosion = () => {
           bgStarDis &&(
             <div className=" brightness-200 duration-500 ease-in-out transition-transform  contrast-100 ">
       
-            <SnowParticles/>
+            <
             </div>
           )
         }

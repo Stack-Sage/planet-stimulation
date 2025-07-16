@@ -2,7 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import SunLoad from "./SunLoad";
 import Button from "../Button";
-
+import EarthScene from "../ui/PlanetModel";
+import GlobeComponent from "../ui/PlanetModel";
 import PlanetModel from "../ui/PlanetModel";
 import { CollisionContext, CollisionProvider } from "../../contents/content";
 import SnowParticles from "../ui/enhance/particleWave";
