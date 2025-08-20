@@ -14,8 +14,8 @@ const App = () => {
     <>
       <div className="w-full h-full  ">
       
-          {/* <Bang /> */}
-          <PostExplosion/>
+          <Bang />
+{/*           <PostExplosion/> */}
 
         
         
